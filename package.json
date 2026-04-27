@@ -1,0 +1,11 @@
+{
+  "name": "agprogram-root",
+  "private": true,
+  "workspaces": [
+    "frontends"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=frontends"
+  }
+}
+
