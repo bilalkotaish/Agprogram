@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'https://agbackend-1-hi8l.onrender.com/api',
+  baseURL: import.meta.env.VITE_API_URL || 'https://agbackend-78.onrender.com/api',
   withCredentials: true,
 });
 
