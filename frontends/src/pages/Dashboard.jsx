@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { exportToExcel } from '../utils/exportExcel';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from 'recharts';
 
-const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 export default function Dashboard() {
   const [stats, setStats] = useState({
@@ -36,8 +36,8 @@ export default function Dashboard() {
     try {
       const { data } = await api.get('/daily-reports');
       setDailyReports(data);
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -92,34 +92,34 @@ export default function Dashboard() {
   const projectedLiquidity = Number(stats.balance) + Number(stats.owedToMe) - Number(stats.iOwe);
 
   const statCards = [
-    { 
-      title: 'Current Cash Balance', 
+    {
+      title: 'Current Cash Balance',
       subtitle: 'From Cash Liquidity',
-      value: stats.balance, 
-      icon: <DollarSign className="text-primary" />, 
+      value: stats.balance,
+      icon: <DollarSign className="text-primary" />,
       color: 'text-primary',
       link: '/cash-balance'
     },
-    { 
-      title: 'Total Commissions', 
+    {
+      title: 'Total Commissions',
       subtitle: 'Accumulated',
-      value: stats.totalCommissions, 
-      icon: <Percent className="text-success" />, 
-      color: 'text-success' 
+      value: stats.totalCommissions,
+      icon: <Percent className="text-success" />,
+      color: 'text-success'
     },
-    { 
-      title: 'Clients Owe Me', 
+    {
+      title: 'Clients Owe Me',
       subtitle: 'Receivables',
-      value: stats.owedToMe, 
-      icon: <ArrowUpRight className="text-warning" />, 
-      color: 'text-warning' 
+      value: stats.owedToMe,
+      icon: <ArrowUpRight className="text-warning" />,
+      color: 'text-warning'
     },
-    { 
-      title: 'I Owe Clients', 
+    {
+      title: 'I Owe Clients',
       subtitle: 'Payables',
-      value: stats.iOwe, 
-      icon: <ArrowDownLeft className="text-danger" />, 
-      color: 'text-danger' 
+      value: stats.iOwe,
+      icon: <ArrowDownLeft className="text-danger" />,
+      color: 'text-danger'
     },
   ];
 
@@ -157,7 +157,7 @@ export default function Dashboard() {
           <button onClick={handleExport} className="btn btn-outline" style={{ border: '1px solid var(--success)', color: 'var(--success)' }}>
             <FileSpreadsheet size={18} /> Export Summary
           </button>
-          
+
           <div className="card" style={{ padding: '1rem 2rem', background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%)', border: '1px solid var(--primary)', minWidth: '200px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.25rem' }}>
               <Landmark size={18} className="text-primary" />
@@ -180,7 +180,7 @@ export default function Dashboard() {
               </div>
               {stat.icon}
             </div>
-            
+
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div className={`value ${stat.color}`} style={{ fontSize: '1.5rem' }}>
                 ${Number(stat.value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
